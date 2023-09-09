@@ -1,2 +1,13 @@
-FROM alpine:3.14
-CMD [ "echo", "Iago" ]
+FROM node
+
+WORKDIR /app
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
